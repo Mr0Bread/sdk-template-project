@@ -77,10 +77,12 @@ async function main() {
         })
     }
 
-    // Seed Orders
+    // Seed Orders (only on an empty table: orders have no natural unique key, so
+    // re-running the seed would otherwise duplicate them on every start)
     const pendingStatus = await prisma.orderStatus.findUnique({ where: { name: 'Pending' } })
+    const orderCount = await prisma.order.count()
 
-    if (pendingStatus && customer) {
+    if (pendingStatus && customer && orderCount === 0) {
         const order1 = await prisma.order.create({
             data: {
                 userId: customer.id,
