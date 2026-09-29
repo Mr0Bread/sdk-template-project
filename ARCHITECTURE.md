@@ -57,11 +57,16 @@ graph TD
     -   **Role**: Manages customer orders.
     -   **Port**: Exposed on host port `8083` (internal `8080`).
 
-5.  **Database**
+5.  **API Service** (unified)
+    -   **Tech Stack**: TypeScript on Node.js 24 (run with `tsx` 4.23.15), Hono 4.13.11, `postgres` 3.4.9.
+    -   **Role**: Single service exposing the same read endpoints as the three services above: `GET /products`, `GET /users`, `GET /orders`, with identical response shapes (users never include `password`; orders nest `status: {id, name}`).
+    -   **Port**: Exposed on host port `8084` (internal `8000`).
+
+6.  **Database**
     -   **Tech Stack**: PostgreSQL 18.6-alpine.
     -   **Role**: Shared persistent storage for both services (Database: `ecommerce_db`).
 
-6.  **Migration Runner**
+7.  **Migration Runner**
     -   **Tech Stack**: Node.js 24-slim, Prisma 7.10.0.
     -   **Role**: Handles database migrations and data seeding.
 

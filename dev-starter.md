@@ -30,6 +30,7 @@ The default configuration uses:
 - Products Service (PHP): `http://localhost:8082`
 - Users Service (Python): `http://localhost:8000`
 - Orders Service (Java): `http://localhost:8083`
+- API Service (Node.js + Hono): `http://localhost:8084`
 - Database (PostgreSQL): `localhost:5432`
 
 ### Step 3: Start All Services
@@ -64,6 +65,7 @@ Open your browser and navigate to:
 - **Products API**: http://localhost:8082/products
 - **Users API**: http://localhost:8000/users
 - **Orders API**: http://localhost:8083/orders
+- **API Service** (all three resources): http://localhost:8084/products, http://localhost:8084/users, http://localhost:8084/orders
 
 ---
 
@@ -225,6 +227,7 @@ docker compose exec database psql -U postgres -d ecommerce_db
 | Products Service | PHP 8.4 + Slim 4.15.3 | 8082 | Product management API |
 | Users Service | Python 3.13 + FastAPI 0.141.1 | 8000 | User management API |
 | Orders Service | Java 25 + Spring Boot 4.1.1 | 8083 | Order management API |
+| API Service | Node 24 + tsx + Hono 4.13.11 | 8084 | Unified products/users/orders API |
 | Database | PostgreSQL 18.6 | 5432 | Data persistence |
 | Migration Runner | Node 24 + Prisma 7.10.0 | - | Database migrations |
 

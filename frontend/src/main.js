@@ -14,7 +14,7 @@ const config = {
  */
 async function init() {
   const app = document.getElementById('app')
-  
+
   // Render the main layout
   app.innerHTML = `
     <header class="header">
@@ -49,13 +49,9 @@ async function init() {
     </main>
   `
   
-  // Fetch and render data from all APIs
-  // Using Promise.allSettled to handle partial failures gracefully
-  await Promise.allSettled([
-    renderProducts(config.productsApiUrl),
-    renderUsers(config.usersApiUrl),
-    renderOrders(config.ordersApiUrl)
-  ])
+  await renderProducts(config.productsApiUrl)
+  await renderUsers(config.usersApiUrl)
+  await renderOrders(config.ordersApiUrl)
 }
 
 // Start the application when DOM is ready
